@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MysqlCon {
-	static TableType table =new TableType();
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost:3306/ourdatabase";
 	static final String USER = "root";
@@ -22,13 +21,20 @@ public class MysqlCon {
 		      System.out.println("Connecting to database...");
 		      
 		      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+		      StationController station = new StationController();
 
 		      //STEP 4: Execute a query
 		      System.out.println("Creating statement...");
 		      stmt = conn.createStatement();
-              String sql;
-              sql=table.type();
-		      ResultSet rs = stmt.executeQuery(sql);
+              String sql="";
+              ResultSet rs;
+              if(station.isPassenger) 
+                  sql="SELECT * FROM riders";
+              if(station.isDriver)
+            	  sql="SELECT * FROM drivers";
+              if(station.isManager)
+            	  sql="SELECT * FROM managers";
+               rs = stmt.executeQuery(sql);
 
 		      //STEP 5: Extract data from result set
 		      while(rs.next()){

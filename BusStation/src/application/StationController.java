@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.*;
 
 public  class StationController implements Initializable {
-
 	String username;
 	String password;
 	boolean isPassenger = false;
@@ -63,22 +62,6 @@ public  class StationController implements Initializable {
     	isPassenger = true;
         isDriver = false;
         isManager = false;
-    }
-    
-    public boolean checkPassenger() {
-    	if(isPassenger)
-    		return true ;
-    	return false ;
-    }
-    public boolean checkDriver() {
-    	if(isDriver)
-    		return true ;
-    	return false ;
-    }
-    public boolean checkManager() {
-    	if(isManager)
-    		return true ;
-    	return false ;
     }
 
     @FXML
