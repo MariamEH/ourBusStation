@@ -31,6 +31,7 @@ public  class StationController implements Initializable {
 	boolean isPassenger = false;
 	boolean isDriver = false;
 	boolean isManager = false;
+	boolean found ;
 	Main control = new Main();
     @FXML
     private TextField usernameText;
@@ -101,12 +102,23 @@ public  class StationController implements Initializable {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
     	  connect();
+    	  if (found) {
           Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerScreen.fxml"));
           Scene home_page_scene = new Scene (home_page_parent);
           Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
           appStage.hide();
           appStage.setScene(home_page_scene);
           appStage.show();
+    }
+    	  else {
+    		  mText.setText("Wrong Username or Password");
+    		  passwordText.setText(null);
+    		  usernameText.setText(null);
+    		  isPassenger = false;
+    		  isDriver = false;
+    		  isManager = false;
+    	      
+    }
     }
 
 
@@ -141,14 +153,13 @@ public void connect() {
 	      //STEP 5: Extract data from result set
 	      while(rs.next()){
 	         //Retrieve by column name
-	         int id  = rs.getInt("id");
 	         String first = rs.getString("name");
 	         String last = rs.getString("password");
-
+             
 	         //Display values
-	         System.out.print("id: " + id);
-	         System.out.print(", name: " + first);
-	         System.out.println(", password: " + last);
+	         if(first.equals(username)&&last.equals(password))
+	        	 found=true ;
+                 
 	      }
 	    //STEP 6: Clean-up environment
 	      rs.close();
@@ -177,5 +188,6 @@ public void connect() {
 	   System.out.println("Goodbye!");
        }//end main
 	//end FirstExample
+
 
 }
