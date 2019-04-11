@@ -11,24 +11,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class PassengerController {
+public class ManagerController {
 
 	@FXML
-    private Button createTripButton;
-
-    @FXML
-    private Button editTripButton;
-
-    @FXML
     private Button viewTripsButton;
 
     @FXML
-    private Button logoutButton;
+    private Button addTripsButton;
 
     @FXML
-    void handleCreateTrip(ActionEvent event) throws IOException {
+    private Button removeTripsButton;
 
-    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerCreateTrip.fxml"));
+    @FXML
+    private Button assignButton;
+
+    @FXML
+    private Button logoutButton;
+    
+    @FXML
+    void handleAddTrips(ActionEvent event) throws IOException {
+
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerAddTrip.fxml"));
         Scene home_page_scene = new Scene (home_page_parent);
         Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
         appStage.hide();
@@ -37,27 +40,25 @@ public class PassengerController {
     }
 
     @FXML
-    void handleEditTrips(ActionEvent event) throws IOException {
+    void handleAssignButton(ActionEvent event) {
 
-    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerEditTrip.fxml"));
-        Scene home_page_scene = new Scene (home_page_parent);
-        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
-        appStage.hide();
-        appStage.setScene(home_page_scene);
-        appStage.show();
+    }
+
+    @FXML
+    void handleRemoveTrips(ActionEvent event) {
+
     }
 
     @FXML
     void handleViewTrips(ActionEvent event) throws IOException {
 
-    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerTrips.fxml"));
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerViewTrips.fxml"));
         Scene home_page_scene = new Scene (home_page_parent);
         Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
         appStage.hide();
         appStage.setScene(home_page_scene);
         appStage.show();
     }
-
     @FXML
     void handleLogoutButton(ActionEvent event) throws IOException {
 
@@ -68,6 +69,4 @@ public class PassengerController {
         appStage.setScene(home_page_scene);
         appStage.show();
     }
-
-
 }
