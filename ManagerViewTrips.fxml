@@ -15,13 +15,13 @@
                   <Font name="Bodoni MT" size="30.0" />
                </font>
             </Text>
-            <Text fx:id="tripsText" layoutX="7.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="386.13671875">
+            <Button fx:id="backButton" layoutX="20.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleBackButton" text="back" />
+            <Text layoutX="34.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id-source-destination-ticket-trip-vehicle-price-driver" textAlignment="CENTER" wrappingWidth="340.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="41.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleBackButton" text="back" />
-            <Text fx:id="tripsText1" layoutX="41.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id-source-destination-ticket-trip-vehicle-price-driver" textAlignment="CENTER" wrappingWidth="325.13671875">
+            <Text fx:id="tripsText" layoutX="18.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="371.13671875">
                <font>
                   <Font size="14.0" />
                </font>

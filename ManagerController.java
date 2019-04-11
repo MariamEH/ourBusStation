@@ -40,13 +40,23 @@ public class ManagerController {
     }
 
     @FXML
-    void handleAssignButton(ActionEvent event) {
-
+    void handleAssignButton(ActionEvent event) throws IOException {
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerAssign.fxml"));
+        Scene home_page_scene = new Scene (home_page_parent);
+        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
+        appStage.hide();
+        appStage.setScene(home_page_scene);
+        appStage.show();
     }
 
     @FXML
-    void handleRemoveTrips(ActionEvent event) {
-
+    void handleRemoveTrips(ActionEvent event) throws IOException {
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerRemoveTrip.fxml"));
+        Scene home_page_scene = new Scene (home_page_parent);
+        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
+        appStage.hide();
+        appStage.setScene(home_page_scene);
+        appStage.show();
     }
 
     @FXML
