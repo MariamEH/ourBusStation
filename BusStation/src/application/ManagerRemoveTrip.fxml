@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1"  fx:controller="application.ManagerRemoveTripController">
+   <center>
+      <Pane prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#2e7921" layoutX="91.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Available Trips">
+               <font>
+                  <Font name="Calisto MT" size="30.0" />
+               </font>
+            </Text>
+            <Text fx:id="tripsText" layoutX="45.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="321.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="58.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose the trip you want to remove" wrappingWidth="210.13671875" />
+            <ComboBox fx:id="numBox" layoutX="255.0" layoutY="281.0" prefHeight="17.0" prefWidth="45.0" />
+            <Button fx:id="backButton" layoutX="32.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="58.0" text="back" />
+            <Button fx:id="removeButton" layoutX="318.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleRemoveButton" text="remove" />
+            <Text fx:id="msgText" fill="#2d166f" layoutX="99.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="212.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

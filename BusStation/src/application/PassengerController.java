@@ -23,6 +23,9 @@ public class PassengerController {
     private Button viewTripsButton;
 
     @FXML
+    private Button logoutButton;
+
+    @FXML
     void handleCreateTrip(ActionEvent event) throws IOException {
 
     	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerCreateTrip.fxml"));
@@ -34,13 +37,36 @@ public class PassengerController {
     }
 
     @FXML
-    void handleEditTrips(ActionEvent event) {
+    void handleEditTrips(ActionEvent event) throws IOException {
 
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerEditTrip.fxml"));
+        Scene home_page_scene = new Scene (home_page_parent);
+        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
+        appStage.hide();
+        appStage.setScene(home_page_scene);
+        appStage.show();
     }
 
     @FXML
-    void handleViewTrips(ActionEvent event) {
+    void handleViewTrips(ActionEvent event) throws IOException {
 
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("PassengerTrips.fxml"));
+        Scene home_page_scene = new Scene (home_page_parent);
+        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
+        appStage.hide();
+        appStage.setScene(home_page_scene);
+        appStage.show();
+    }
+
+    @FXML
+    void handleLogoutButton(ActionEvent event) throws IOException {
+
+    	Parent home_page_parent =FXMLLoader.load(getClass().getResource("BusStation.fxml"));
+        Scene home_page_scene = new Scene (home_page_parent);
+        Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
+        appStage.hide();
+        appStage.setScene(home_page_scene);
+        appStage.show();
     }
 
 
