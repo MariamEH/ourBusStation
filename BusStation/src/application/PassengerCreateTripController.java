@@ -27,6 +27,7 @@ public class PassengerCreateTripController {
 	static final String USER = "root";
 	static final String PASS = "Stay_Strong1";
 	String sql;
+	ViewAvailableTripsController pview = new ViewAvailableTripsController();
 	ObservableList<String> tripBoxlist = FXCollections.observableArrayList("nonstop","one-stop","many stops");
 	ObservableList<String> ticketBoxlist = FXCollections.observableArrayList("one way","round");
 	ObservableList<String> vehicleBoxlist = FXCollections.observableArrayList("bus","train","plane","ship","car");
@@ -35,11 +36,7 @@ public class PassengerCreateTripController {
 
 	boolean external= false;
 	boolean internal= false;
-	String selectedSource;
-	String selectedDestination;
-	String selectedTicket;
-	String selectedTrip;
-	String selectedVehicle;
+
 	
 	@FXML
     private Button externalButton;
@@ -121,14 +118,14 @@ public class PassengerCreateTripController {
         appStage.hide();
         appStage.setScene(home_page_scene);
         appStage.show();
-        selectedSource = sourceBox.getSelectionModel().getSelectedItem();
-    	selectedDestination = destinationBox.getSelectionModel().getSelectedItem();
-    	selectedVehicle = vehicleBox.getSelectionModel().getSelectedItem();
-    	selectedTicket = ticketBox.getSelectionModel().getSelectedItem();
-    	selectedTrip = tripBox.getSelectionModel().getSelectedItem();
-        System.out.println(selectedSource + selectedTrip );
-        System.out.println(selectedDestination + selectedTicket );
-        System.out.println(selectedVehicle);
+        ViewAvailableTripsController.setSelectedSource(sourceBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedDestination(destinationBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedVehicle(vehicleBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedTicket(ticketBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedTrip(tripBox.getSelectionModel().getSelectedItem());
+        System.out.println(ViewAvailableTripsController.selectedSource + ViewAvailableTripsController.selectedTrip );
+        System.out.println(ViewAvailableTripsController.selectedDestination + ViewAvailableTripsController.selectedTicket );
+        System.out.println(ViewAvailableTripsController.selectedVehicle);
     }
 
     public void connect() {

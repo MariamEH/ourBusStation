@@ -14,7 +14,60 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ViewAvailableTripsController {
+	static String selectedSource;
+	public static String getSelectedSource() {
+		return selectedSource;
+	}
 
+	public static void setSelectedSource(String selectedSource) {
+		ViewAvailableTripsController.selectedSource = selectedSource;
+	}
+	static String selectedDestination;
+	
+	public static String getSelectedDestination() {
+		return selectedDestination;
+	}
+
+	public static void setSelectedDestination(String selectedDestination) {
+		ViewAvailableTripsController.selectedDestination = selectedDestination;
+	}
+	static String selectedTicket;
+	
+	public static String getSelectedTicket() {
+		return selectedTicket;
+	}
+
+	public static void setSelectedTicket(String selectedTicket) {
+		ViewAvailableTripsController.selectedTicket = selectedTicket;
+	}
+	static String selectedTrip;
+	
+	public static String getSelectedTrip() {
+		return selectedTrip;
+	}
+
+	public static void setSelectedTrip(String selectedTrip) {
+		ViewAvailableTripsController.selectedTrip = selectedTrip;
+	}
+	static String selectedVehicle;
+	
+	public static String getSelectedVehicle() {
+		return selectedVehicle;
+	}
+
+	public static void setSelectedVehicle(String selectedVehicle) {
+		ViewAvailableTripsController.selectedVehicle = selectedVehicle;
+	}
+	static String username ;
+	
+	public static String getUsername() {
+		return username;
+	}
+
+	public static void setUsername(String username) {
+		ViewAvailableTripsController.username = username;
+	}
+	
 	@FXML
     private Text tripsText;
 

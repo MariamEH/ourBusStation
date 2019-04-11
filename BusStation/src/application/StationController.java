@@ -35,6 +35,7 @@ public  class StationController implements Initializable {
 	public String test ;
 	DriverBasicInformationController info = new DriverBasicInformationController();
 	DriverTripsController dtrip =new DriverTripsController();
+	ViewAvailableTripsController pview = new ViewAvailableTripsController();
 	
     @FXML
     private TextField usernameText;
@@ -192,6 +193,8 @@ public void connect() {
 	        		 DriverBasicInformationController.setUsername(first);
                      DriverTripsController.setUsername(first);
 	        	 }
+	        	 else if(checkPassenger())
+	        		 ViewAvailableTripsController.setUsername(first);
 
 	         }
 	      }
