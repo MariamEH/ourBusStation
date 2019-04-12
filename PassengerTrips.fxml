@@ -15,7 +15,7 @@
                   <Font name="Century Schoolbook Bold" size="30.0" />
                </font>
             </Text>
-            <Text fx:id="tripText" layoutX="67.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="278.826171875">
+            <Text fx:id="tripText" layoutX="8.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="384.826171875">
                <font>
                   <Font size="14.0" />
                </font>
