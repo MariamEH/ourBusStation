@@ -9,7 +9,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewAvailableTripsController">
    <center>
-      <Pane onMouseClicked="#initialize" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
             <Text fill="#344b8d" layoutX="111.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Trips">
                <font>
@@ -25,6 +25,12 @@
             <Button fx:id="nextButton" layoutX="294.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleNextButton" text="next" />
             <Button fx:id="backButton" layoutX="66.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleBackButton" text="back" />
             <ComboBox fx:id="numBox" layoutX="299.0" layoutY="252.0" prefHeight="16.0" prefWidth="23.0" />
+            <Button fx:id="viewButton" layoutX="307.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleviewButton" text="view" />
+            <Text fx:id="msgText" fill="#27752b" layoutX="47.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="307.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </center>

@@ -51,7 +51,7 @@ public class DriverController {
 
     @FXML
     void handleBasic(ActionEvent event) throws IOException {
-         see();
+         connect();
          Parent home_page_parent =FXMLLoader.load(getClass().getResource("DriverBasicInformation.fxml"));
          Scene home_page_scene = new Scene (home_page_parent);
          Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
@@ -70,7 +70,7 @@ public class DriverController {
         appStage.setScene(home_page_scene);
         appStage.show();
     }
-    public void see() {
+    public void connect() {
     	Connection conn = null;
     	   Statement stmt = null;
     	   try{

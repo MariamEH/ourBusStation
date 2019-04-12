@@ -18,15 +18,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class PassengerCreateTripController {
+public class PassengerCreateTripController implements StationInterface {
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/ourdatabase";
 	static final String USER = "root";
 	static final String PASS = "nevermindmh1890-";
 	String sql;
+	ViewAvailableTripsController pview = new ViewAvailableTripsController();
 	ObservableList<String> tripBoxlist = FXCollections.observableArrayList("nonstop","one-stop","many stops");
 	ObservableList<String> ticketBoxlist = FXCollections.observableArrayList("one way","round");
 	ObservableList<String> vehicleBoxlist = FXCollections.observableArrayList("bus","train","plane","ship","car");
@@ -35,12 +37,10 @@ public class PassengerCreateTripController {
 
 	boolean external= false;
 	boolean internal= false;
-	String selectedSource;
-	String selectedDestination;
-	String selectedTicket;
-	String selectedTrip;
-	String selectedVehicle;
-	
+
+	@FXML
+    private TextField numTicketText;
+
 	@FXML
     private Button externalButton;
 
@@ -57,7 +57,7 @@ public class PassengerCreateTripController {
     @FXML
     private ChoiceBox<String> ticketBox;
 
-    
+
     @FXML
     private ChoiceBox<String> vehicleBox;
 
@@ -79,9 +79,9 @@ public class PassengerCreateTripController {
     	sourceBox.setMaxHeight(30);
     	destinationBox.setItems(destinationBoxlist);
     	destinationBox.setMaxHeight(30);
-    	
+
     }
-    
+
     @FXML
     void handleBackButton(ActionEvent event) throws IOException {
 
@@ -96,9 +96,11 @@ public class PassengerCreateTripController {
     @FXML
     void handleExternalButton(ActionEvent event) {
     	sourceBoxlist.removeAll(sourceBoxlist);
-    	destinationBoxlist.removeAll(destinationBoxlist); 
+    	destinationBoxlist.removeAll(destinationBoxlist);
     	external = true;
     	internal = false;
+    	ViewAvailableTripsController.setExternal(external);
+    	ViewAvailableTripsController.setInternal(internal);
     	connect();
     }
 
@@ -109,6 +111,8 @@ public class PassengerCreateTripController {
     	destinationBoxlist.removeAll(destinationBoxlist);
     	external = false;
     	internal = true;
+    	ViewAvailableTripsController.setExternal(external);
+    	ViewAvailableTripsController.setInternal(internal);
     	connect();
     }
 
@@ -121,14 +125,14 @@ public class PassengerCreateTripController {
         appStage.hide();
         appStage.setScene(home_page_scene);
         appStage.show();
-        selectedSource = sourceBox.getSelectionModel().getSelectedItem();
-    	selectedDestination = destinationBox.getSelectionModel().getSelectedItem();
-    	selectedVehicle = vehicleBox.getSelectionModel().getSelectedItem();
-    	selectedTicket = ticketBox.getSelectionModel().getSelectedItem();
-    	selectedTrip = tripBox.getSelectionModel().getSelectedItem();
-        System.out.println(selectedSource + selectedTrip );
-        System.out.println(selectedDestination + selectedTicket );
-        System.out.println(selectedVehicle);
+        ViewAvailableTripsController.setSelectedSource(sourceBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedDestination(destinationBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedVehicle(vehicleBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedTicket(ticketBox.getSelectionModel().getSelectedItem());
+    	ViewAvailableTripsController.setSelectedTrip(tripBox.getSelectionModel().getSelectedItem());
+        System.out.println(ViewAvailableTripsController.selectedSource + ViewAvailableTripsController.selectedTrip );
+        System.out.println(ViewAvailableTripsController.selectedDestination + ViewAvailableTripsController.selectedTicket );
+        System.out.println(ViewAvailableTripsController.selectedVehicle);
     }
 
     public void connect() {
@@ -136,7 +140,7 @@ public class PassengerCreateTripController {
     	   Statement stmt = null;
     	   try{
 
-    	       Class.forName("com.mysql.jdbc.Driver");
+    	       Class.forName("com.mysql.cj.jdbc.Driver");
 
     	      //STEP 3: Open a connection
     	      System.out.println("Connecting to database...");
@@ -146,11 +150,11 @@ public class PassengerCreateTripController {
     	      System.out.println("Creating statement...");
     	      stmt = conn.createStatement();
            ResultSet rs;
-          
+
            if(external)
-               sql="SELECT * FROM external";
+               sql="SELECT * FROM externaltrips";
            if(internal)
-         	  sql="SELECT * FROM internal";
+         	  sql="SELECT * FROM internaltrips";
 
             rs = stmt.executeQuery(sql);
 
@@ -158,7 +162,7 @@ public class PassengerCreateTripController {
     	      //STEP 5: Extract data from result set
     	      while(rs.next()){
     	         //Retrieve by column name
-    	    	 
+
     	         sourceBoxlist.add(rs.getString("source"));
     	         destinationBoxlist.add(rs.getString("destination"));
 
@@ -191,6 +195,12 @@ public class PassengerCreateTripController {
            }//end main
     	//end FirstExample
 
-	
-    
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+
+	}
+
+
+
 }

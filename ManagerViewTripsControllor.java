@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ManagerViewTripsControllor {
+public class ManagerViewTripsControllor implements StationInterface {
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/ourdatabase";
@@ -63,7 +63,7 @@ public class ManagerViewTripsControllor {
 	    	      stmt = conn.createStatement();
 	           ResultSet rs;
 	           String sql ;
-	               sql="SELECT * FROM externalTrips";
+	               sql="SELECT * FROM externaltrips";
 	            rs = stmt.executeQuery(sql);
 
 
@@ -83,7 +83,7 @@ public class ManagerViewTripsControllor {
  	    	         //Display values
 	    	  
 	    	      }
-	    	      sql="SELECT * FROM internalTrips";
+	    	      sql="SELECT * FROM internaltrips";
 		            rs = stmt.executeQuery(sql);
 
 
@@ -132,5 +132,10 @@ public class ManagerViewTripsControllor {
 	    	   System.out.println("Goodbye!");
 	           }//end main
 	    	//end FirstExample
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}
 
 }

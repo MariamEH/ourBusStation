@@ -30,13 +30,13 @@ public class ManagerController {
     
     @FXML
     void handleAddTrips(ActionEvent event) throws IOException {
-
     	Parent home_page_parent =FXMLLoader.load(getClass().getResource("ManagerAddTrip.fxml"));
         Scene home_page_scene = new Scene (home_page_parent);
         Stage appStage =(Stage)(((Node) event.getSource()).getScene().getWindow());
         appStage.hide();
         appStage.setScene(home_page_scene);
         appStage.show();
+
     }
 
     @FXML
@@ -47,6 +47,7 @@ public class ManagerController {
         appStage.hide();
         appStage.setScene(home_page_scene);
         appStage.show();
+
     }
 
     @FXML

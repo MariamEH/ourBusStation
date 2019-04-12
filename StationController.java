@@ -7,11 +7,9 @@ import java.sql.Statement;
 import java.io.IOException;
 import java.net.URL;
 
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
@@ -20,7 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.*;
 
-public  class StationController implements Initializable {
+public  class StationController implements StationInterface {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/ourdatabase";
 	static final String USER = "root";
@@ -33,7 +31,11 @@ public  class StationController implements Initializable {
 	boolean isManager = false;
 	boolean found ;
 	public String test ;
-	Main control = new Main();
+	DriverBasicInformationController info = new DriverBasicInformationController();
+	DriverTripsController dtrip =new DriverTripsController();
+	ViewAvailableTripsController pview = new ViewAvailableTripsController();
+	PassnegerChooseEditTripController etrip = new PassnegerChooseEditTripController();
+	
     @FXML
     private TextField usernameText;
     @FXML
@@ -147,17 +149,13 @@ public  class StationController implements Initializable {
 
 
 
-	@Override
-	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-
-
-	}
+	
 public void connect() {
 	Connection conn = null;
 	   Statement stmt = null;
 	   try{
 
-	       Class.forName("com.mysql.jdbc.Driver");
+	       Class.forName("com.mysql.cj.jdbc.Driver");
 
 	      //STEP 3: Open a connection
 	      System.out.println("Connecting to database...");
@@ -186,9 +184,16 @@ public void connect() {
 	         //Display values
 	         if(first.equals(username)&&last.equals(password)){
 	        	 found=true ;
-	        	 System.out.println(username);
-	    		 test=first;
+	        	 if(checkDriver()) {
+	        		 DriverBasicInformationController.setUsername(first);
+                     DriverTripsController.setUsername(first);
+	        	 }
+	        	 else if(checkPassenger()) {
+	        		 ViewAvailableTripsController.setUsername(first);
+	        		 PassnegerChooseEditTripController.setUsername(first);
+  
 	         }
+	      }
 	      }
 	    //STEP 6: Clean-up environment
 	      rs.close();
@@ -217,5 +222,12 @@ public void connect() {
 	   System.out.println("Goodbye!");
        }//end main
 	//end FirstExample
+
+
+@Override
+public void remove() {
+	// TODO Auto-generated method stub
+	
+}
 
 }

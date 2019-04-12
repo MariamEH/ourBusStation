@@ -19,11 +19,10 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ManagerAddTripController {
+public class ManagerAddTripController implements StationInterface {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/ourdatabase";
 	static final String USER = "root";
@@ -38,6 +37,9 @@ public class ManagerAddTripController {
 	String source;
 	String destination;
 
+
+
+	 
 	@FXML
     private TextField tripIdText;
 
@@ -107,7 +109,7 @@ public class ManagerAddTripController {
     	id = tripIdText.getText();
     	source =sourceText.getText();
     	destination =destinationText.getText();
-    	add();
+    	connect();
 
 
     }
@@ -122,7 +124,7 @@ public class ManagerAddTripController {
         appStage.setScene(home_page_scene);
         appStage.show();
     }
-    public void add() {
+    public void connect() {
     	Connection conn = null;
     	   Statement stmt = null;
     	   try{
@@ -136,7 +138,7 @@ public class ManagerAddTripController {
     	      //STEP 4: Execute a query
     	      System.out.println("Creating statement...");
     	      stmt = conn.createStatement();
-           String query = "insert into externalTrips(id,source,destination,ticket,trip,vehicle,price)values(?,?,?,?,?,?,?)";
+           String query = "insert into externaltrips(id,source,destination,ticket,trip,vehicle,price)values(?,?,?,?,?,?,?)";
            PreparedStatement ps = conn.prepareStatement(query);
            ps.setString(1,tripIdText.getText());
            ps.setString(2,sourceText.getText());
@@ -176,5 +178,13 @@ public class ManagerAddTripController {
     	   System.out.println("Goodbye!");
            }//end main
     	//end FirstExample
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }
